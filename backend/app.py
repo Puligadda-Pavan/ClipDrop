@@ -57,14 +57,21 @@ def run_download(job_id: str, url: str) -> None:
             update_job(job_id, status="processing", progress=99)
 
     options = {
-        "format": "bestvideo+bestaudio/best",
-        "merge_output_format": "mp4",
-        "outtmpl": output_template,
-        "noplaylist": True,
-        "progress_hooks": [progress_hook],
-        "quiet": True,
-        "no_warnings": True,
-    }
+    "format": "bestvideo+bestaudio/best",
+    "merge_output_format": "mp4",
+    "outtmpl": output_template,
+    "noplaylist": True,
+    "progress_hooks": [progress_hook],
+    "quiet": True,
+    "no_warnings": True,
+
+    # Use the bgutil PO-token provider
+    "extractor_args": {
+        "youtubepot-bgutilhttp": {
+            "base_url": "http://127.0.0.1:4416"
+        }
+    },
+}
 
     try:
         update_job(job_id, status="starting", progress=0)
