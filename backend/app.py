@@ -62,6 +62,7 @@ def run_download(job_id: str, url: str) -> None:
     "outtmpl": output_template,
     "noplaylist": True,
     "progress_hooks": [progress_hook],
+
     "quiet": False,
     "no_warnings": False,
     "verbose": True,
