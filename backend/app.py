@@ -62,8 +62,10 @@ def run_download(job_id: str, url: str) -> None:
     "outtmpl": output_template,
     "noplaylist": True,
     "progress_hooks": [progress_hook],
-    "quiet": True,
-    "no_warnings": True,
+    "quiet": False,
+    "no_warnings": False,
+    "verbose": True,
+
     "extractor_args": {
         "youtubepot-bgutilhttp": {
             "base_url": "http://127.0.0.1:4416"
