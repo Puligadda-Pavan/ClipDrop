@@ -75,6 +75,8 @@ function updateProgress(job) {
 
 function resetPanel() {
   completeActions.hidden = true;
+  saveLink.removeAttribute('href');
+  fileName.textContent = '';
   errorMessage.hidden = true;
   progressBar.style.width = '0%';
   progressPercent.textContent = '0%';
@@ -82,6 +84,8 @@ function resetPanel() {
 
 function showError(message) {
   progressPanel.hidden = false;
+  completeActions.hidden = true;
+  saveLink.removeAttribute('href');
   errorMessage.textContent = message;
   errorMessage.hidden = false;
   progressLabel.textContent = 'Something needs attention';
