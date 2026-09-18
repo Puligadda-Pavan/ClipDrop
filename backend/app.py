@@ -176,7 +176,7 @@ def run_download(job_id: str, url: str) -> None:
         # -------------------------------------------------
 
         "js_runtimes": {
-            "deno": {}
+            "node": {}
         },
 
 
@@ -185,11 +185,8 @@ def run_download(job_id: str, url: str) -> None:
         # -------------------------------------------------
 
         "extractor_args": {
-
             "youtubepot-bgutilhttp": {
-
-                "base_url":
-                    "http://127.0.0.1:4416"
+                "base_url": "http://127.0.0.1:4416"
             }
         },
     }

@@ -9,7 +9,6 @@ RUN apt-get update \
         ffmpeg \
         curl \
         ca-certificates \
-        xz-utils \
         git \
         build-essential \
     && rm -rf /var/lib/apt/lists/*
@@ -28,20 +27,6 @@ RUN curl -fsSL \
     && rm /tmp/node.tar.xz \
     && node --version \
     && npm --version
-
-
-# =========================================================
-# Install Deno
-# =========================================================
-
-RUN curl -fsSL \
-    https://deno.land/install.sh \
-    | sh
-
-ENV DENO_INSTALL="/root/.deno"
-ENV PATH="${DENO_INSTALL}/bin:${PATH}"
-
-RUN deno --version
 
 
 # =========================================================
@@ -94,7 +79,7 @@ COPY static ./static
 
 
 # =========================================================
-# Downloads
+# Downloads directory
 # =========================================================
 
 RUN mkdir -p downloads
@@ -108,14 +93,14 @@ ENV FLASK_DEBUG=false
 
 
 # =========================================================
-# Port
+# Render port
 # =========================================================
 
 EXPOSE 5000
 
 
 # =========================================================
-# Start services
+# Start bgutil + Gunicorn
 # =========================================================
 
 CMD ["sh", "-c", "node /opt/bgutil-ytdlp-pot-provider/server/build/main.js & gunicorn --bind 0.0.0.0:${PORT:-5000} --workers 1 --threads 4 --timeout 900 app:app"]
