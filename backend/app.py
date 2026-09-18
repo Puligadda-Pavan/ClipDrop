@@ -57,25 +57,28 @@ def run_download(job_id: str, url: str) -> None:
             update_job(job_id, status="processing", progress=99)
 
     options = {
-    "format": "best/bestvideo+bestaudio",
+    "format": "bestvideo+bestaudio/best",
     "merge_output_format": "mp4",
     "outtmpl": output_template,
     "noplaylist": True,
+
     "progress_hooks": [progress_hook],
 
     "quiet": False,
     "no_warnings": False,
     "verbose": True,
 
+    # Enable Node.js for YouTube JavaScript challenges
     "js_runtimes": {
         "node": {}
     },
 
+    # bgutil PO-token provider
     "extractor_args": {
-        "youtube": {
-            "player_client": ["tv"]
+        "youtubepot-bgutilhttp": {
+            "base_url": "http://127.0.0.1:4416"
         }
-    }
+    },
 }
 
     try:
