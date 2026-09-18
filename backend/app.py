@@ -57,7 +57,7 @@ def run_download(job_id: str, url: str) -> None:
             update_job(job_id, status="processing", progress=99)
 
     options = {
-    "format": "bestvideo+bestaudio/best",
+    "format": "best/bestvideo+bestaudio",
     "merge_output_format": "mp4",
     "outtmpl": output_template,
     "noplaylist": True,
@@ -72,10 +72,10 @@ def run_download(job_id: str, url: str) -> None:
     },
 
     "extractor_args": {
-        "youtubepot-bgutilhttp": {
-            "base_url": "http://127.0.0.1:4416"
+        "youtube": {
+            "player_client": ["tv"]
         }
-    },
+    }
 }
 
     try:
