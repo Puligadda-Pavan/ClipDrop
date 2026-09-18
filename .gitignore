@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Downloaded video files
+downloads/*
+backend/downloads/*
+
+# Keep the folders
+!downloads/.gitkeep
+!backend/downloads/.gitkeep
+
+# Environment variables
+.env
+.env.*
+!.env.example
