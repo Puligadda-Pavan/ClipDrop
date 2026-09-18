@@ -67,12 +67,10 @@ def run_download(job_id: str, url: str) -> None:
     "no_warnings": False,
     "verbose": True,
 
-    # Enable Node.js for YouTube's JS challenge solving
     "js_runtimes": {
-        "node": None
+        "node": {}
     },
 
-    # Use bgutil PO-token provider
     "extractor_args": {
         "youtubepot-bgutilhttp": {
             "base_url": "http://127.0.0.1:4416"
