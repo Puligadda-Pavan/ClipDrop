@@ -64,8 +64,6 @@ def run_download(job_id: str, url: str) -> None:
     "progress_hooks": [progress_hook],
     "quiet": True,
     "no_warnings": True,
-
-    # Use the bgutil PO-token provider
     "extractor_args": {
         "youtubepot-bgutilhttp": {
             "base_url": "http://127.0.0.1:4416"

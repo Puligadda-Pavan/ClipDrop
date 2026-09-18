@@ -1,12 +1,13 @@
 FROM python:3.13-slim
 
-# Install system dependencies
+# System dependencies
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ffmpeg \
         curl \
         ca-certificates \
         xz-utils \
+        git \
         build-essential \
     && rm -rf /var/lib/apt/lists/*
 
@@ -25,7 +26,7 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install the PO-token provider server
+# Install bgutil PO token provider
 RUN git clone --single-branch --branch 2.0.0 \
     https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git \
     /opt/bgutil-ytdlp-pot-provider \
@@ -35,7 +36,6 @@ RUN git clone --single-branch --branch 2.0.0 \
 
 # Copy application
 COPY app.py .
-
 COPY templates ./templates
 COPY static ./static
 
