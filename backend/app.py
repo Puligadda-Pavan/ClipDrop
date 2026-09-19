@@ -147,7 +147,6 @@ def run_download(job_id: str, url: str) -> None:
     # -----------------------------------------------------
 
     options = {
-
         # Best available video + audio
         "format": "bestvideo+bestaudio/best",
 
@@ -162,7 +161,7 @@ def run_download(job_id: str, url: str) -> None:
 
         # Progress reporting
         "progress_hooks": [
-            progress_hook
+            progress_hook,
         ],
 
         # Logging
@@ -170,23 +169,18 @@ def run_download(job_id: str, url: str) -> None:
         "no_warnings": False,
         "verbose": True,
 
+        # Force IPv4
+        "force_ipv4": True,
 
-        # -------------------------------------------------
         # JavaScript runtime
-        # -------------------------------------------------
-
         "js_runtimes": {
-            "node": {}
+            "node": {},
         },
 
-
-        # -------------------------------------------------
         # bgutil PO Token Provider
-        # -------------------------------------------------
-
         "extractor_args": {
             "youtubepot-bgutilhttp": {
-                "base_url": "http://127.0.0.1:4416"
+                "base_url": "http://127.0.0.1:4416",
             }
         },
     }
