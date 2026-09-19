@@ -1,1 +1,1 @@
-window.DOWNLOADER_API_URL = "https://clipdrop-api.onrender.com/";
+window.DOWNLOADER_API_URL = "https://clipdrop-backend-6qll.onrender.com";
