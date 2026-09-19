@@ -103,4 +103,4 @@ EXPOSE 5000
 # Start bgutil + Gunicorn
 # =========================================================
 
-CMD ["sh", "-c", "node /opt/bgutil-ytdlp-pot-provider/server/build/main.js & gunicorn --bind 0.0.0.0:${PORT:-5000} --workers 1 --threads 4 --timeout 900 app:app"]
+CMD ["sh", "-c", "node /opt/bgutil-ytdlp-pot-provider/server/build/main.js & until curl -fsS http://127.0.0.1:4416/ping >/dev/null; do sleep 1; done; gunicorn --bind 0.0.0.0:${PORT:-5000} --workers 1 --threads 4 --timeout 900 app:app"]
